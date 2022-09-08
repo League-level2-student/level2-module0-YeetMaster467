@@ -1,4 +1,3 @@
-package arrays;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -8,7 +7,7 @@ import processing.core.PImage;
  * In this class:
  * 1. Declare a PImage array variable as a member variable in this class.
  *    DO NOT initialize it.
- * 	
+ *   
  * 2. In the initializePaintings() method, initialize the PImage array to
  *    contain 4 images.
  * 
@@ -46,7 +45,7 @@ import processing.core.PImage;
  *           Watercolor paintings work the best!
  */
 
-public class _03_VanGogh extends PApplet {
+
     PImage canvas;
     PImage paintbrushCursor;
     boolean initializeCanvas = true;
@@ -59,17 +58,23 @@ public class _03_VanGogh extends PApplet {
     Brush brush;
     
     void initializePaintings() {
-        imageArr = new PImage[4];
+        imageArr = new PImage[6];
         imageArr[0] = loadImage("painterOnRoad.jpg");
         imageArr[1] = loadImage("starryNight.jpg");
         imageArr[2] = loadImage("strawHatPortrait.jpg");
-        imageArr[3] = loadImage("wheatFeild.jpg");
+        imageArr[3] = loadImage("wheatField.jpg");
+        imageArr[4] = loadImage("Fall.jpg");
+        imageArr[5] = loadImage("Mountain.jpg");
         count = 0;
         brush.setNewPainting(imageArr[count]);
     }
     
     void selectNextPainting() {
-        
+        count++;
+        if(count == 6 || count > 6){
+          count = 0;
+        }
+        brush.setNewPainting(imageArr[count]);
     }
 
     @Override
@@ -120,8 +125,3 @@ public class _03_VanGogh extends PApplet {
             }
         }
     }
-
-    public static void main(String[] args) {
-        PApplet.main(_03_VanGogh.class.getName());
-    }
-}
